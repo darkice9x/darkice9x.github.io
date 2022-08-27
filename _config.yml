@@ -140,7 +140,7 @@ yat:
 defaults:
    home:
      heading: "이에스테크놀로지"
-     subheading: "Your awesome subheading"
+     subheading: "새로운 기술에 도전하는"
      banner: "/assets/images/banners/home.jpeg"
 
 # Banner default settings
