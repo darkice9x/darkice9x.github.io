@@ -1,0 +1,435 @@
+I"jP<h2 id="linux-하위시스템-설치">Linux 하위시스템 설치</h2>
+
+<ol>
+  <li>
+    <p>제어판을 연다</p>
+
+    <ul>
+      <li>파일탐색기를 연다</li>
+      <li>제어판\프로그램\프로그램 및 기능 붙여넣기</li>
+      <li>Windows 기능 켜기/끄기 선택</li>
+    </ul>
+  </li>
+  <li>
+    <p>Hyper-V와 Linx용 Windows 하위 시스템 체크</p>
+
+    <p><img src="/assets/images/wsl2/Image_003.png" alt="image" /></p>
+  </li>
+  <li>
+    <p>Windows 하이퍼바이저 플랫폼과 가상 머신 플랫폼 체크</p>
+
+    <p><img src="/assets/images/wsl2/Image_005.png" alt="image" /></p>
+  </li>
+  <li>
+    <p>Powershell 터미날을 연다.</p>
+
+    <p>wsl –update</p>
+
+    <p>wsl –install -d ubuntu-20.04</p>
+  </li>
+  <li>
+    <p>wsl 백업/복구</p>
+
+    <p>wsl –export Ubuntu-20.04 D:\Ubuntu2004Backup.tar</p>
+
+    <p>wsl –import Ubuntu-20.04 C:\Users\Administrator\AppData\Local\Packages\Ubuntu2004 D:\Ubuntu2004Backup.tar</p>
+
+    <p>복구후 wsl -d Ubuntu-20.04로 실행</p>
+
+    <p>기본 User가 root이기 때문에 바꿀려면</p>
+
+    <p>$ sudo nano /etc/wsl.conf</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>   <span class="o">[</span>user]
+   <span class="nv">default</span><span class="o">=</span>darkice
+</code></pre></div>    </div>
+
+    <p>이후 로그인하면 기본 디렉토리가 현 윈도우 디렉토리로 되어 있는데 이것도 아래 명령을 실행시켜 준다</p>
+
+    <p>wsl -d Ubuntu-20.04 sh -c “cd ~;exec $SHELL”</p>
+  </li>
+</ol>
+
+<h2 id="git-업데이트">Git 업데이트</h2>
+
+<pre><code class="language-bah">  $ sudo apt-get upgrade
+  $ sudo add-apt-repository ppa:git-core/ppa -y
+  $ sudo apt-get update
+  $ sudo apt-get install git -y
+</code></pre>
+
+<h2 id="python-설치">Python 설치</h2>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="nv">$ </span>wget https://repo.anaconda.com/miniconda/Miniconda3-py39_4.12.0-Linux-x86_64.sh
+  <span class="nv">$ </span>wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
+  <span class="nv">$ </span>bash Miniconda3-py39_4.12.0-Linux-x86_64.sh
+  <span class="nv">$ </span>bash Miniconda3-latest-Linux-x86_64.sh
+  <span class="nv">$ </span>conda update -n base conda
+  <span class="nv">$ </span>conda update --all
+  <span class="nv">$ </span>python <span class="nt">-m</span> pip <span class="nb">install</span> <span class="nt">--upgrade</span> pip
+</code></pre></div></div>
+
+<ol>
+  <li>
+    <p>Yolov2환경</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="nv">$ </span>conda create <span class="nt">-n</span> yolov2 <span class="nv">python</span><span class="o">=</span>3.7
+ <span class="nv">$ </span>conda activate yolov2
+ <span class="nv">$ </span>pip <span class="nb">install </span>git+https://github.com/AIWintermuteAI/aXeleRate@legacy-yolov2
+ <span class="nv">$ </span>git clone <span class="nt">-b</span> legacy-yolov2 <span class="nt">--single-branch</span> https://github.com/AIWintermuteAI/aXeleRate.git
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Yolov3 환경</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="nv">$ </span>conda create <span class="nt">-n</span> yolov3 <span class="nv">python</span><span class="o">=</span>3.7
+ <span class="nv">$ </span>conda activate yolov3
+ <span class="nv">$ </span>pip <span class="nb">install </span>git+https://github.com/AIWintermuteAI/aXeleRate
+ <span class="nv">$ </span>git clone https://github.com/AIWintermuteAI/aXeleRate.git
+</code></pre></div>    </div>
+  </li>
+</ol>
+
+<h2 id="kendryte-k210환경-설정">Kendryte K210환경 설정</h2>
+
+<p>– YoloV3환경에서 실행해야함</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="nv">$ </span>git clone https://github.com/sipeed/MaixPy.git
+  <span class="nv">$ </span>ren MaixPy MaixPyV2
+  <span class="nv">$ </span><span class="nb">cd </span>MaixPyV2
+  <span class="nv">$ </span>git submodule update <span class="nt">--recursive</span> <span class="nt">--init</span>
+  <span class="nv">$ </span>pip <span class="nb">install</span> <span class="nt">-r</span> requirements.txt
+  <span class="nv">$ </span><span class="nb">sudo </span>apt-get <span class="nb">install </span>autoconf automake autotools-dev curl libmpc-dev libmpfr-dev libgmp-dev gawk build-essential bison flex texinfo gperf libtool patchutils bc zlib1g-dev libexpat-dev
+  <span class="nv">$ </span><span class="nb">sudo </span>apt-get <span class="nb">install</span> <span class="nt">-y</span> sshpass p7zip-full build-essential cmake
+  <span class="nv">$ </span>wget http://dl.cdn.sipeed.com/kendryte-toolchain-ubuntu-amd64-8.2.0-20190409.tar.xz
+  <span class="nv">$ </span><span class="nb">sudo tar</span> <span class="nt">-Jxvf</span> kendryte-toolchain-ubuntu-amd64-8.2.0-20190409.tar.xz <span class="nt">-C</span> /opt
+</code></pre></div></div>
+
+<h2 id="bashrc-편집">.bashrc 편집</h2>
+
+<p>$ sudo nano ./.bashrc</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="nb">alias </span><span class="nv">K210</span><span class="o">=</span><span class="s2">"export PATH='/opt/kendryte-toolchain/bin/:</span><span class="nv">$PATH</span><span class="s2">'"</span>
+</code></pre></div></div>
+
+<h2 id="maixpy-build---yolov2">MaixPy Build - YoloV2</h2>
+
+<p>$ cd MaixPyV2</p>
+
+<p>$ sudo nano ./maixpy_build</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>  <span class="nb">echo</span> <span class="s2">"TRAVIS_BRANCH=</span><span class="nv">$TRAVIS_BRANCH</span><span class="s2">, BRANCH=</span><span class="nv">$BRANCH</span><span class="s2">"</span>
+  <span class="nb">cd </span>tools/release
+  <span class="nb">chmod</span> +x release.sh <span class="o">&amp;&amp;</span> ./release.sh <span class="se">\|</span>| travis<span class="se">\_</span>terminate 1<span class="p">;</span>
+  <span class="k">if</span> <span class="o">[</span> <span class="s2">"</span><span class="nv">$TRAVIS_PULL_REQUEST</span><span class="s2">"</span> <span class="o">!=</span> <span class="s2">"false"</span> <span class="o">]</span><span class="p">;</span> <span class="k">then </span><span class="nb">exit </span>0<span class="p">;</span> <span class="k">fi
+  </span><span class="nv">time_now</span><span class="o">=</span><span class="si">$(</span><span class="nb">date</span> <span class="s2">"+%Y_%m_%d_%H_%M_%S"</span><span class="si">)</span>
+  <span class="nb">cd </span>bin
+  <span class="nv">firmware_dir</span><span class="o">=</span><span class="sb">`</span><span class="nb">ls</span><span class="sb">`</span>
+  <span class="nb">sudo </span>sh <span class="nt">-c</span> <span class="s2">"echo StrictHostKeyChecking no &gt;&gt;/etc/ssh/ssh_config"</span>
+  <span class="nb">chmod</span> <span class="nt">-R</span> 777 <span class="nv">$firmware_dir</span>
+  <span class="nv">SSHPATH</span><span class="o">=</span><span class="s2">"</span><span class="nv">$HOME</span><span class="s2">/.ssh"</span>
+  <span class="nb">rm</span> <span class="nt">-rf</span> <span class="s2">"</span><span class="nv">$SSHPATH</span><span class="s2">"</span>
+  <span class="nb">mkdir</span> <span class="nt">-p</span> <span class="s2">"</span><span class="nv">$SSHPATH</span><span class="s2">"</span>
+  <span class="nb">echo</span> <span class="s2">"</span><span class="k">${</span><span class="nv">ACCESS_KEY</span><span class="k">}</span><span class="s2">"</span> <span class="o">&gt;</span> <span class="s2">"</span><span class="nv">$SSHPATH</span><span class="s2">/id_rsa"</span>
+  <span class="nb">chmod </span>600 <span class="s2">"</span><span class="nv">$SSHPATH</span><span class="s2">/id_rsa"</span>
+  rsync <span class="nt">-av</span> <span class="nt">--progress</span> <span class="nv">$firmware_dir</span> <span class="k">${</span><span class="nv">SERVER_USER</span><span class="k">}</span>@<span class="k">${</span><span class="nv">SERVER_ADDR</span><span class="k">}</span>:<span class="k">${</span><span class="nv">SERVER_FOLDER_PATH</span><span class="k">}</span>/<span class="k">${</span><span class="nv">curr_branch</span><span class="k">}</span>/
+</code></pre></div></div>
+
+<h2 id="maixpy-build---yolov3">MaixPy Build - YoloV3</h2>
+
+<p>«MaixPy_support_yolov3.zip»</p>
+
+<p>위에 첨부한 화일안의 Txt화일을 참고하여 파일을 붙여 넣고 maixpy_build를 실행한다.</p>
+
+<h2 id="한글설정">한글설정</h2>
+
+<ol>
+  <li>
+    <p>한글 언어 팩</p>
+
+    <p>$ sudo apt-get install -y language-pack-ko</p>
+  </li>
+  <li>
+    <p>Locale 설치</p>
+
+    <p>$ sudo locale-gen ko_KR.EUC-KR</p>
+  </li>
+  <li>
+    <p>LANG 설정 업데이트</p>
+
+    <p>$ sudo update-locale LANG=ko_KR.UTF-8 LC_MESSAGES=POSIX</p>
+  </li>
+  <li>
+    <p>한글 입력기 ibus 설치</p>
+
+    <p>$ sudo apt-get install -y ibus-hangul</p>
+  </li>
+  <li>
+    <p>한글 폰트 설치(나눔 글꼴 설치)</p>
+
+    <p>$ sudo apt-get install -y fonts-nanum*</p>
+  </li>
+  <li>
+    <p>fcitx 설치시작</p>
+
+    <p>$ sudo apt install fcitx fcitx-hangul fonts-noto-cjk dbus-x11</p>
+
+    <p>#입력기 설정 -&gt; fictx 선택</p>
+
+    <p>$ im-config</p>
+  </li>
+  <li>
+    <p>fcitx.sh 추가</p>
+
+    <p>$ sudo nano /etc/profile.d/fcitx.sh</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="c">#!/bin/bash</span>
+ <span class="nb">export </span><span class="nv">QT_IM_MODULE</span><span class="o">=</span>fcitx
+ <span class="nb">export </span><span class="nv">GTK_IM_MODULE</span><span class="o">=</span>fcitx
+ <span class="nb">export </span><span class="nv">XMODIFIERS</span><span class="o">=</span>@im<span class="o">=</span>fcitx
+ <span class="nb">export </span><span class="nv">DefaultIMModule</span><span class="o">=</span>fcitx
+
+ <span class="c">#optional</span>
+ fcitx-autostart &amp;&gt;/dev/null
+</code></pre></div>    </div>
+
+    <p>#아래 명령어 실행해서 한글 입력기 추가 되어 있는 지 확인</p>
+
+    <p>$ fcitx-config-gtk3</p>
+  </li>
+</ol>
+
+<h2 id="ubuntu-utils설치">Ubuntu Utils설치</h2>
+<p>$ sudo apt-get update
+     </p>
+<ol>
+  <li>
+    <p>File Manager</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="nv">$ </span><span class="nb">sudo </span>apt-get <span class="nb">install </span>krusader <span class="nt">-y</span>
+ <span class="nv">$ </span><span class="nb">sudo </span>apt-get install pcmanfm <span class="nt">-y</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Total Commander Clone</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="nv">$ </span><span class="nb">sudo </span>apt <span class="nb">install </span>doublecmd-gtk
+ or
+ <span class="nv">$ </span><span class="nb">sudo </span>apt <span class="nb">install </span>doublecmd-qt
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Editor</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="nv">$ </span><span class="nb">sudo </span>apt install kate -y
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>Graphic Editor</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="nv">$ </span><span class="nb">sudo </span>apt <span class="nb">install </span>nomacs
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>XML 이쁘게하기</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="nv">$ </span><span class="nb">sudo </span>apt <span class="nt">-y</span> <span class="nb">install </span>libxml2-utils     <span class="c">#사용법 xmllint --format your.xml</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>LibreOffice 설치</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="nv">$ </span><span class="nb">sudo</span> add-apt-repository ppa:libreoffice
+ <span class="nv">$ </span><span class="nb">sudo</span> apt update
+ <span class="nv">$ </span><span class="nb">sudo</span> apt install libreoffice
+ <span class="nv">$ </span>libreoffice --version
+</code></pre></div>    </div>
+    <p><img src="/assets/images/wsl2/Image_007.png" alt="image" /></p>
+  </li>
+</ol>
+
+<h2 id="ubuntu-x-manager설치">Ubuntu X-Manager설치</h2>
+
+<ol>
+  <li>
+    <p>패키지 정보를 업데이트 합니다.</p>
+
+    <p>$ sudo apt-get update &amp;&amp; sudo apt-get -y upgrade</p>
+  </li>
+  <li>
+    <p>설치된 xrdp를 지웁니다.</p>
+
+    <p>$ sudo apt-get purge xrdp</p>
+  </li>
+  <li>
+    <p>x window manager를 설치합니다.</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="nv">$ </span><span class="nb">sudo </span>apt-get install tasksel
+ <span class="nv">$ </span><span class="nb">sudo </span>apt-get install lightdm
+ <span class="nv">$ </span><span class="nb">sudo</span> apt-get install -y kubuntu-desktop
+ 설치시에 display manager는 lightdm으로 설정
+ <span class="nv">$ </span><span class="nb">sudo </span>apt <span class="nt">-y</span> <span class="nb">install </span>xfce4 xfce4-terminal xfce4-goodies firefox thunderbird thunar-archive-plugin file-roller xterm
+ <span class="nv">$ </span><span class="nb">sudo </span>tasksel <span class="nb">install </span>ubuntu-mate-desktop
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>xrdp를 설치합니다.</p>
+
+    <p>$ sudo apt-get install xrdp</p>
+
+    <p>[참고] 간혹 xrdp 패키지가 업다고 나오면 다음과 같이 sources.list에 universe를 추가합니다.</p>
+
+    <p>$ sudo add-apt-repository universe</p>
+  </li>
+  <li>
+    <p>xrdp.ini를 편집합니다.</p>
+  </li>
+  <li>
+    <p>우선 기존의 ini를 백업합니다.</p>
+
+    <p>$ sudo cp /etc/xrdp/xrdp.ini /etc/xrdp/xrdp.init.bak</p>
+  </li>
+  <li>
+    <p>3389포트를 5001으로 변경합니다.</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="nv">$ </span><span class="nb">sudo sed</span> <span class="nt">-i</span> <span class="s1">'s/port=3389/port=5001/g'</span> /etc/xrdp/xrdp.ini
+ <span class="c">#sudo sed -i 's/3389/3390/g' /etc/xrdp/xrdp.ini</span>
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>해상도를 변경합니다.</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="nv">$ </span><span class="nb">sudo</span> sed -i <span class="s1">'s/max_bpp=32/#max_bpp=32\nmax_bpp=128/g'</span> /etc/xrdp/xrdp.ini
+ <span class="nv">$ </span><span class="nb">sudo</span> sed -i <span class="s1">'s/xserverbpp=24/#xserverbpp=24\nxserverbpp=128/g'</span> /etc/xrdp/xrdp.ini
+</code></pre></div>    </div>
+  </li>
+  <li>
+    <p>사용자의 xsession를 만듭니다.</p>
+
+    <p>$ nano ~/.xsession</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="c">#kde desktop인경우</span>
+ startplasma-x11
+ <span class="nb">export</span> XDG_SESSION_DESKTOP<span class="o">=</span>KDE
+ <span class="nb">export</span> XDG_DATA_DIRS<span class="o">=</span>/usr/share/plasma:/usr/local/share:/usr/share:/var/lib/snapd/desktop
+ <span class="nb">export</span> XDG_CONFIG_DIRS<span class="o">=</span>/etc/xdg/xdg-plasma:/etc/xdg:/usr/share/kubuntu-default-settings/kf5-settings
+ <span class="c">#xfce인 경우</span>
+ xfce4-session
+ <span class="c">#mate인 경우</span>
+ mate-session
+</code></pre></div>    </div>
+
+    <p>[참고]dbus를 사용하여 실행하는 방법도 있습니다.</p>
+
+    <p>$ sudo nano ~/start-gui</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="nb">sudo mkdir</span> /var/run/dbus
+ <span class="nb">sudo </span>dbus-daemon <span class="nt">--config-file</span><span class="o">=</span>/usr/share/dbus-1/system.conf
+ <span class="nb">rm</span> <span class="nt">-rf</span> .cache/sessions
+
+ <span class="c">#enable dbus</span>
+ <span class="nb">sudo </span>systemctl <span class="nb">enable </span>dbus
+ <span class="nb">sudo</span> /etc/init.d/dbus start
+ <span class="nb">sudo</span> /etc/init.d/xrdp start
+ <span class="c"># check xrdp status</span>
+ <span class="nb">sudo</span> /etc/init.d/xrdp status
+
+ <span class="nb">rm</span> <span class="nt">-rf</span> .xorgxrdp.<span class="k">*</span>.log
+ <span class="nb">rm</span> <span class="nt">-rf</span> .xsession-errors
+</code></pre></div>    </div>
+
+    <p>$ sudo chmod +w ~/start-gui</p>
+  </li>
+</ol>
+
+<h2 id="usb-serial-설정">USB Serial 설정</h2>
+
+<ol>
+  <li>
+    <p>USBIPD-WIN 프로젝트 설치</p>
+
+    <p>USB 디바이스 연결에 대한 지원은 WSL2에서 기본적으로 사용할 수 없으므로 오픈 소스 usbipd-win 프로젝트를 설치해야 합니다.
+ usbipd-win 프로젝트의 최신 릴리스 페이지로 이동합니다.
+ 설치 관리자를 다운로드할 .msi 파일을 선택합니다. (이 다운로드를 신뢰하는지 확인하라는 경고가 표시 될 수 있습니다).
+ 다운로드한 usbipd-win_2.3.0.msi 설치 관리자 파일을 실행합니다.
+   </p>
+  </li>
+  <li>
+    <p>Linux에서 USBIP 도구 및 하드웨어 데이터베이스 설치</p>
+
+    <div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="nv">$ </span><span class="nb">sudo </span>apt <span class="nb">install </span>linux-tools-5.4.0-77-generic hwdata
+ <span class="nv">$ </span><span class="nb">sudo </span>update-alternatives <span class="nt">--install</span> /usr/local/bin/usbip usbip /usr/lib/linux-tools/5.4.0-77-generic/usbip 20
+</code></pre></div>    </div>
+    <p> </p>
+  </li>
+  <li>
+    <p>USB 디바이스 연결</p>
+  </li>
+</ol>
+
+<ul>
+  <li>
+    <p>관리자 모드에서 PowerShell을 열고 명령을 입력하여 Windows 연결된 모든 USB 디바이스를 나열합니다.</p>
+
+    <p>usbipd wsl list
+  <img src="/assets/images/wsl2/Image_008.png" alt="image" /></p>
+  </li>
+  <li>
+    <p>Ubuntu를 구동한후 WSL에 연결하려는 디바이스의 버스 ID를 선택하고 이 명령을 실행합니다. sudo 명령을 실행하려면 WSL에서 암호를 입력하라는 메시지가 표시됩니다. 연결할 Linux 배포판은 기본 배포여야 합니다. 기본 배포를 변경하려면 WSL용 기본 문서를 참조하세요.</p>
+
+    <p>usbipd wsl attach –busid<busid>
+   </busid></p>
+  </li>
+  <li>
+    <p>Ubuntu(또는 원하는 WSL 명령줄)를 열고 다음 명령을 사용하여 연결된 USB 디바이스를 나열합니다.</p>
+
+    <p>$ lsusb
+  <img src="/assets/images/wsl2/Image_009.png" alt="image" /></p>
+
+    <p>$ dmesg | grep tty
+  <img src="/assets/images/wsl2/Image_010.png" alt="image" /></p>
+
+    <p>$ minicom -s
+  <img src="/assets/images/wsl2/Image_011.png" alt="image" /></p>
+
+    <p>Port를 /dev/ttyUSB0선택
+  <img src="/assets/images/wsl2/Image_012.png" alt="image" /></p>
+  </li>
+</ul>
+
+<p> </p>
+<h2 id="visual-studio-code-설치하는-방법">Visual Studio Code 설치하는 방법</h2>
+
+<ol>
+  <li>
+    <p>curl을 설치해줍니다. 이미 설치되어 있다고 메시지가 보일 수도 있습니다. </p>
+
+    <p>$ sudo apt-get install curl</p>
+  </li>
+  <li>
+    <p>마이크로소프트 GPG 키를 다운로드하여 /etc/apt/trusted.gpg.d/ 경로에 복사해줍니다.</p>
+
+    <p>$ sudo sh -c ‘curl  https://packages.microsoft.com/keys/microsoft.asc | gpg –dearmor &gt; /etc/apt/trusted.gpg.d/microsoft.gpg’</p>
+  </li>
+  <li>
+    <p>Visual Studio Code를 다운로드 받기 위한 저장소를 추가합니다.</p>
+
+    <p>$ sudo sh -c ‘echo “deb [arch=amd64]  https://packages.microsoft.com/repos/vscode stable main” &gt; /etc/apt/sources.list.d/vscode.list’</p>
+  </li>
+  <li>
+    <p>추가한 저장소로부터 패키지 목록을 가져옵니다.</p>
+
+    <p>$ sudo apt update</p>
+  </li>
+  <li>
+    <p>Visual Studio Code를 설치합니다.</p>
+
+    <p>$ sudo apt install code</p>
+  </li>
+  <li>
+    <p>터미널 또는 데스크톱 환경에서 실행할 수 있습니다.</p>
+
+    <p>$ code</p>
+  </li>
+</ol>
+:ET
