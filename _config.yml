@@ -141,7 +141,7 @@ defaults:
    home:
      heading: "이에스테크놀로지"
      subheading: "Your awesome subheading"
-     banner: "Your image url"
+     banner: "/assets/images/banners/home.jpeg"
 
 # Banner default settings
 # These banner settings are for global banner default, but you can also
