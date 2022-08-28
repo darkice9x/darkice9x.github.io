@@ -1,4 +1,4 @@
-I"jP<h2 id="linux-하위시스템-설치">Linux 하위시스템 설치</h2>
+I"eQ<h2 id="linux-하위시스템-설치">Linux 하위시스템 설치</h2>
 
 <ol>
   <li>
@@ -13,12 +13,12 @@
   <li>
     <p>Hyper-V와 Linx용 Windows 하위 시스템 체크</p>
 
-    <p><img src="/assets/images/wsl2/Image_003.png" alt="image" /></p>
+    <p><img src="/assets/images/wsl2/Image_003.png" alt="image" width="80%" height="80%" /></p>
   </li>
   <li>
     <p>Windows 하이퍼바이저 플랫폼과 가상 머신 플랫폼 체크</p>
 
-    <p><img src="/assets/images/wsl2/Image_005.png" alt="image" /></p>
+    <p><img src="/assets/images/wsl2/Image_005.png" alt="image" width="80%" height="80%" /></p>
   </li>
   <li>
     <p>Powershell 터미날을 연다.</p>
@@ -137,7 +137,13 @@
 
 <h2 id="maixpy-build---yolov3">MaixPy Build - YoloV3</h2>
 
-<p>«MaixPy_support_yolov3.zip»</p>
+<table>
+  <tbody>
+    <tr>
+      <td>![image](/assets/images/wsl2/Image_006.png)(https://github.com/darkice9x/darkice9x.github.io/raw/main/assets/down/MaixPy_support_yolov3.zip)</td>
+    </tr>
+  </tbody>
+</table>
 
 <p>위에 첨부한 화일안의 Txt화일을 참고하여 파일을 붙여 넣고 maixpy_build를 실행한다.</p>
 
@@ -244,7 +250,7 @@
  <span class="nv">$ </span><span class="nb">sudo</span> apt install libreoffice
  <span class="nv">$ </span>libreoffice --version
 </code></pre></div>    </div>
-    <p><img src="/assets/images/wsl2/Image_007.png" alt="image" /></p>
+    <p><img src="/assets/images/wsl2/Image_007.png" alt="image" width="80%" height="80%" /></p>
   </li>
 </ol>
 
