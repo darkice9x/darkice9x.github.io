@@ -11,4 +11,4 @@ tags: test
 
 ||
 |:--:|
-| I'm centered! |
+| ![image](/assets/images/wsl2/Image_003.png) |
