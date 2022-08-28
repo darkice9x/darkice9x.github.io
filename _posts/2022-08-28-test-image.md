@@ -6,4 +6,6 @@ categories: 유용한팁
 tags: test
 ---
 
-![image](/assets/images/wsl2/Image_003.png){: width="100" height="100"}
+---
+![image](/assets/images/wsl2/Image_003.png){: width="100" height="100" style="text-align: right"}
+---
