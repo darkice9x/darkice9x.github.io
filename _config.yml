@@ -183,8 +183,6 @@ markdown: kramdown
 kmarkdown:
   input: GFM
 
-math: true
-
 plugins:
   - jekyll-feed
   - jekyll-seo-tag
