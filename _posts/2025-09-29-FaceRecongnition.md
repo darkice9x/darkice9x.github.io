@@ -10,26 +10,26 @@ tags: orangepi tips
 ## [FaceRecognitionRKNN](https://github.com/darkice9x/FaceRecongnitionRKNN)
 Deploy face recognition(retinaface + mobilefacenet) to RK3588S, optimized for rknpu.
 
-# 1. Model 변환
+## 1. Model 변환
 준비사항
 
 -PC
 
     *Python 3.10
     *rknn-toolkit2 : rknn_toolkit2-2.3.2-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
-## 1.1 MobileFaceNet
+### 1.1 MobileFaceNet
   ~~~bash
   cd rk3588_mobilefacenet
   python mobilefacenetConvert.py
   ~~~
 facenet_mxnet_caffe만 가능
-## 1.2 RetinaFace
+### 1.2 RetinaFace
   ~~~bash
   cd convert
   python convert.py
   ~~~
 
-# 2. 사용법
+## 2. 사용법
 준비사항
 
 -BOARD
