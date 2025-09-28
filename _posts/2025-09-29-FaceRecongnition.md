@@ -7,7 +7,7 @@ comments: true
 tags: orangepi tips
 ---
 
-# [FaceRecognitionRKNN](https://github.com/darkice9x/FaceRecongnitionRKNN)
+## [FaceRecognitionRKNN](https://github.com/darkice9x/FaceRecongnitionRKNN)
 Deploy face recognition(retinaface + mobilefacenet) to RK3588S, optimized for rknpu.
 
 # 1. Model 변환
