@@ -16,14 +16,18 @@ Deploy face recognition(retinaface + mobilefacenet) to RK3588S, optimized for rk
 -PC
 
     *Python 3.10
-    *rknn-toolkit2 : rknn_toolkit2-2.3.2-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
+    *rknn-toolkit2 : rknn_toolkit2-2.3.2-cp310-cp310-manylinux_2_17_x86_64.manylinux2014_x86_64.
+    
 ### 1.1 MobileFaceNet
+
   ~~~bash
   cd rk3588_mobilefacenet
   python mobilefacenetConvert.py
   ~~~
 facenet_mxnet_caffe만 가능
+
 ### 1.2 RetinaFace
+
   ~~~bash
   cd convert
   python convert.py
