@@ -22,6 +22,7 @@ Deploy PaddleOCR V5 Korean to RK3588, optimized for rknpu.
     pip install paddlepaddle==3.0.0 -i https://www.paddlepaddle.org.cn/packages/stable/cpu/
     pip install paddleocr
     paddlex --install paddle2onnx
+    
 ### 1.1 PaddleOCR V5 Detection
   ~~~bash
   cd Models
