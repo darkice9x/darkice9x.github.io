@@ -13,13 +13,15 @@ Deploy PaddleOCR V5 Korean to RK3588, optimized for rknpu.
 ## 1. Model 변환
 준비사항  
 -PC  
-    *Python 3.11
-    *rknn-toolkit2 : rknn_toolkit2-2.3.2-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
-    pip install rknn_toolkit2-2.3.2-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
-    pip install setuptools==69.5.1
-    pip install paddlepaddle==3.0.0 -i https://www.paddlepaddle.org.cn/packages/stable/cpu/
-    pip install paddleocr
-    paddlex --install paddle2onnx
+  ~~~text
+  *Python 3.11
+  *rknn-toolkit2 : rknn_toolkit2-2.3.2-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
+  pip install rknn_toolkit2-2.3.2-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
+  pip install setuptools==69.5.1
+  pip install paddlepaddle==3.0.0 -i https://www.paddlepaddle.org.cn/packages/stable/cpu/
+  pip install paddleocr
+  paddlex --install paddle2onnx
+  ~~~
 
 ### 1.1 PaddleOCR V5 Detection
   ~~~bash
