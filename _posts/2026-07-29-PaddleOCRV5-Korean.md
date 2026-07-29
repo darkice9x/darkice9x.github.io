@@ -7,11 +7,11 @@ comments: true
 tags: orangepi tips
 ---
 
-## [PaddleOCRV5 Korean](https://github.com/darkice9x/PaddleOCRV5_Korean)
+## [PaddleOCRV5 Korean](https://github.com/darkice9x/PaddleOCRV5_Korean)  
 Deploy PaddleOCR V5 Korean to RK3588, optimized for rknpu.  
 한글모델(korean+PP-OCRv5_mobile_rec)을 onnx로 만들고 그것을 다시 RKNPU에서 사용 가능한 RKNN으로 변환하는 과정과 그것을 사용 하는 과정을 담고 있다.
 
-## 1. Model 변환
+## 1. Model 변환  
 준비사항  
 -PC  
   ~~~text
@@ -24,7 +24,7 @@ Deploy PaddleOCR V5 Korean to RK3588, optimized for rknpu.
   paddlex --install paddle2onnx
   ~~~
 
-### 1.1 PaddleOCR V5 Detection
+### 1.1 PaddleOCR V5 Detection  
   ~~~bash
   cd Models
   paddleocr text_detection -i ./hangul.png \
@@ -34,7 +34,7 @@ Deploy PaddleOCR V5 Korean to RK3588, optimized for rknpu.
   python convert_det.py  ./PP-OCRv5_mobile_det.onnx  rk3588 fp PP-OCRv5_mobile_det.rknn
   ~~~
 
-### 1.2 PaddleOCR V5 Recognition
+### 1.2 PaddleOCR V5 Recognition  
   ~~~bash
   cd Models
   paddleocr text_recognition -i ./hangul.png \
@@ -45,9 +45,9 @@ Deploy PaddleOCR V5 Korean to RK3588, optimized for rknpu.
   python convert_rec.py  ./korean_PP-OCRv5_mobile_rec.onnx  rk3588 fp korean_PP-OCRv5_mobile_rec.rknn
   ~~~
 
-## 2. 사용예
-### 1. 입력 이미지
+## 2. 사용예  
+### 1. 입력 이미지  
 ![image](/assets/images/paddle/hangul.png){: width="50%" height="50%"}
 
-### 2. 처리 결과 이미지
+### 2. 처리 결과 이미지  
 ![image](/assets/images/paddle/hangul_det_rec_rknn.png){: width="50%" height="50%"}
