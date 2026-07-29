@@ -8,7 +8,8 @@ tags: orangepi tips
 ---
 
 ## [PaddleOCRV5 Korean](https://github.com/darkice9x/PaddleOCRV5_Korean)
-Deploy PaddleOCR V5 Korean to RK3588, optimized for rknpu.
+Deploy PaddleOCR V5 Korean to RK3588, optimized for rknpu.  
+한글모델(korean+PP-OCRv5_mobile_rec)을 onnx로 만들고 그것을 다시 RKNPU에서 사용 가능한 RKNN으로 변환하는 과정과 그것을 사용 하는 과정을 담고 있다.
 
 ## 1. Model 변환
 준비사항  
