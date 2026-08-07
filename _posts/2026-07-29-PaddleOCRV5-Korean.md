@@ -50,13 +50,22 @@ Deploy PaddleOCR V5 Korean to RK3588, optimized for rknpu.
 <table border="1">
     <tr>
         <td>
-            <img src="https://github.com/darkice9x/PaddleOCRV5_Korean/blob/main/hangul.png" width="75%">
+            <img src="/assets/images/paddle/hangul.png" width="75%">
         </td>
         <td>
-            <img src="https://github.com/darkice9x/PaddleOCRV5_Korean/blob/main/korean.png" width="100%">
+            <img src="/assets/images/paddle/hangul_det_rec_rknn.png" width="100%">
         </td>
     </tr>
 </table>
 
 ### 2. 처리 결과 이미지  
-![image](/assets/images/paddle/hangul_det_rec_rknn.png){: width="50%" height="50%"}
+<table border="1">
+    <tr>
+        <td>
+            <img src="/assets/images/paddle/korean.png" width="75%">
+        </td>
+        <td>
+            <img src="/assets/images/paddle/hangul_det_rec_rknn_tilt.png" width="100%">
+        </td>
+    </tr>
+</table>
