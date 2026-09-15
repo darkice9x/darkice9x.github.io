@@ -8,7 +8,8 @@ tags: orangepi tips
 ---
 
 ## [FaceRecognitionRKNN](https://github.com/darkice9x/FaceRecongnitionRKNN)
-Deploy face recognition(retinaface + mobilefacenet) to RK3588S, optimized for rknpu.
+Deploy face recognition(retinaface + mobilefacenet) to RK3588S, optimized for rknpu.  
+2026-9-13 Add Face Anti Spoofing Function
 
 ## 1. Model 변환
 준비사항
